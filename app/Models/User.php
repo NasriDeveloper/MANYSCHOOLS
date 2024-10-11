@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -21,6 +19,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'school_registration_number',
+        'school_address_location',
+        'school_facebook_link',
+        'school_instagram_link',
+        'school_twitter_link',
+        'school_website_link',
+        'school_logo',
+        'school_motto',
     ];
 
     /**
@@ -44,5 +50,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * One-to-Many relationship with TeachersInformation.
+     * 
+     * A user (school) can have many teachers.
+     */
+    public function teachers()
+    {
+        return $this->hasMany(TeachersInformation::class);
     }
 }
