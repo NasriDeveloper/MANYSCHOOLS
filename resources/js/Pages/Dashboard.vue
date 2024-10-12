@@ -17,6 +17,7 @@ const links = [
     { name: 'Student Registration', href: '/student-registration' },
     { name: 'Parent Registration', href: '/parent-registration' },
     { name: 'Teacher Registration', href: '/teacher-registration' },
+    { name: 'Teachers List', href: '/view-teachers' },
 ];
 </script>
 
