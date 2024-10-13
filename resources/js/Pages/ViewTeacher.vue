@@ -2,31 +2,7 @@
     <AuthenticatedLayout title="Teachers List">
         <div class="flex min-h-screen bg-gray-100">
             <!-- Sidebar -->
-            <aside 
-                :class="sidebarOpen ? 'w-64' : 'w-16'" 
-                class="bg-gray-800 text-gray-100 transition-all duration-300"
-            >
-                <div class="h-16 flex items-center justify-between border-b border-gray-700 px-4">
-                    <h1 :class="sidebarOpen ? 'block' : 'hidden'" class="text-2xl font-semibold">
-                        Admin Panel
-                    </h1>
-                    <button @click="toggleSidebar" class="text-gray-100 focus:outline-none">
-                        <div class="w-6 h-6 bg-gray-300"></div>
-                    </button>
-                </div>
-
-                <nav class="mt-10">
-                    <Link
-                        v-for="link in links"
-                        :key="link.name"
-                        :href="link.href"
-                        class="block px-4 py-2 text-lg font-bold hover:bg-gray-700"
-                        :class="sidebarOpen ? 'block' : 'hidden'"
-                    >
-                        {{ link.name }}
-                    </Link>
-                </nav>
-            </aside>
+            <Sidebar />
 
             <!-- Main Content -->
             <div class="flex-1 py-12">
@@ -78,6 +54,7 @@
 import { ref } from 'vue';
 import { router, Link } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import Sidebar from "./Sidebar.vue";
 
 // Sidebar state
 const sidebarOpen = ref(true);

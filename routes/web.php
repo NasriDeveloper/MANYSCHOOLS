@@ -31,11 +31,12 @@ Route::get('/teacher-registration', function () {
 
 
 
-
 Route::get('/view-teachers', function () {
-    $teachers = TeachersInformation::all(); // Fetch only teachers
+    // Fetch the logged-in user's teachers using the relationship
+    $user = User::with('teachers')->findOrFail(Auth::id());
+
     return Inertia::render('ViewTeacher', [
-        'teachers' => $teachers,
+        'teachers' => $user->teachers, // Pass teachers to the Inertia view
     ]);
 })->name('view-teachers');
 
